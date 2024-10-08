@@ -77,7 +77,7 @@ const Profile = () => {
                 >
                   <div>
                     <p><strong>Type:</strong> {vacation.type}</p>
-                    <p><strong>Status:</strong> <span className={`text-${vacation.status === 'approved' ? 'green' : 'yellow'}-500 capitalize`}>{vacation.status}</span></p>
+                    <p><strong>Status:</strong> <span className={`text-${vacation.status === 'approved' ? 'green' : 'red'}-500 capitalize`}>{vacation.status}</span></p>
                     <p><strong>Vacation Days Used:</strong> {vacation.type === 'Urlaub' ? `${vacation.vacationDaysUsed}` : '0'}</p>
                     <p><strong>Start Date:</strong> {format(new Date(vacation.startDate), 'MMMM d, yyyy')}</p>
                     <p><strong>End Date:</strong> {format(new Date(vacation.endDate), 'MMMM d, yyyy')}</p>
