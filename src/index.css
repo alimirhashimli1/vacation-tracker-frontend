@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles */
+body {
+  @apply bg-gray-100 text-gray-900;
+}
+
+.container {
+  @apply max-w-4xl mx-auto px-4 py-8;
+}
+
+.card {
+  @apply bg-white shadow-lg rounded-lg p-6 mb-6;
+}
+
+.heading {
+  @apply text-2xl font-semibold text-gray-800 mb-4;
+}
+
+.subheading {
+  @apply text-xl font-medium text-gray-700 mb-2;
+}
+
+.list-item {
+  @apply mb-2 text-gray-600;
+}
+
+.button-primary {
+  @apply bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition;
+}
+
+.input-field {
+  @apply w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
