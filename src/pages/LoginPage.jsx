@@ -5,24 +5,20 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // New state for loading animation
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // Show loading spinner
 
     try {
-      const response = await fetch(
-        'https://vacation-tracker-backend.onrender.com/api/users/login',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        }
-      );
+      const response = await fetch('https://vacation-tracker-backend.onrender.com/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
       if (response.ok) {
         const data = await response.json();
@@ -36,8 +32,8 @@ const LoginPage = () => {
     } catch (err) {
       console.error(err);
       setError('Something went wrong. Please try again later.');
-    } finally {
-      setIsLoading(false); // Hide loading spinner
+    }finally {
+      setIsLoading(false); 
     }
   };
 
@@ -50,9 +46,7 @@ const LoginPage = () => {
           {error && <p className="text-red-500 text-center mb-4">{error}</p>}
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700">
-                Email
-              </label>
+              <label htmlFor="email" className="block text-gray-700">Email</label>
               <input
                 id="email"
                 type="email"
@@ -64,9 +58,7 @@ const LoginPage = () => {
             </div>
 
             <div className="mb-6">
-              <label htmlFor="password" className="block text-gray-700">
-                Password
-              </label>
+              <label htmlFor="password" className="block text-gray-700">Password</label>
               <input
                 id="password"
                 type="password"
@@ -107,33 +99,26 @@ const LoginPage = () => {
                 'Login'
               )}
             </button>
-          </form>
-
-          <p className="text-gray-600 mt-4 text-center">
-          {isLoading &&
+            {isLoading &&  <p className="text-gray-600 mt-4 text-center">
             <em>
               This application is running in test mode. Due to server cold starts,
               loading may take up to 50 seconds. Please be patient.
             </em>
-          }
-          </p>
+          </p>}
+          </form>
         </div>
 
         {/* Test Account Info */}
         <div className="lg:w-1/2 w-full bg-gray-100 p-8 rounded-lg shadow-lg">
           <h3 className="text-xl font-semibold mb-4">Test App Credentials</h3>
           <p className="mb-2">
-            <strong>Admin Account:</strong>
-            <br />
-            Email: <span className="font-mono">admin@example.com</span>
-            <br />
+            <strong>Admin Account:</strong><br />
+            Email: <span className="font-mono">admin@example.com</span><br />
             Password: <span className="font-mono">admin</span>
           </p>
           <p className="mb-2">
-            <strong>User Account:</strong>
-            <br />
-            Email: <span className="font-mono">user@example.com</span>
-            <br />
+            <strong>User Account:</strong><br />
+            Email: <span className="font-mono">user@example.com</span><br />
             Password: <span className="font-mono">user</span>
           </p>
           <p className="text-gray-600">
