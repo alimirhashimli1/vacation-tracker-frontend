@@ -10,7 +10,8 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true); 
+  
     try {
       const response = await fetch('https://vacation-tracker-backend.onrender.com/api/users/login', {
         method: 'POST',
@@ -19,23 +20,24 @@ const LoginPage = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-
+  
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.token);
-        localStorage.setItem('isAdmin', data.user.isAdmin); // Store admin status
-        navigate('/dashboard'); // Redirect to dashboard page if login is successful
+        localStorage.setItem('isAdmin', data.user.isAdmin);
+        navigate('/dashboard');
       } else {
         const errorData = await response.json();
-        setError(errorData.message); // Display error message if login fails
+        setError(errorData.message);
       }
     } catch (err) {
       console.error(err);
       setError('Something went wrong. Please try again later.');
-    }finally {
-      setIsLoading(false); 
+    } finally {
+      setIsLoading(false);
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
